@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+<VBox prefHeight="300.0" prefWidth="530.0" userData="Manage Exercise" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.ManageExerciseViewController">
+   <children>
+      <HBox alignment="CENTER" layoutX="20.0" layoutY="79.0" spacing="10.0">
+         <children>
+            <Label fx:id="headerLabel" alignment="CENTER" prefHeight="35.0" prefWidth="519.0" text="Add Excercise">
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </Label>
+         </children>
+      </HBox>
+      <HBox alignment="CENTER_LEFT" prefHeight="39.0" prefWidth="514.0" spacing="10.0">
+         <children>
+            <Label text="Session">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            <TextField fx:id="sessionField" onAction="#onEnter" prefHeight="39.0" prefWidth="61.0">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </TextField>
+            <Label layoutX="10.0" layoutY="16.0" text="Number">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            <TextField fx:id="numberField" layoutX="80.0" layoutY="10.0" onAction="#onEnter" prefHeight="39.0" prefWidth="61.0">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </TextField>
+            <Label alignment="CENTER_RIGHT" prefHeight="27.0" prefWidth="126.0" text="Completed">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            <RadioButton fx:id="completedRadiobutton" mnemonicParsing="false" prefHeight="27.0" prefWidth="29.0">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </RadioButton>
+         </children>
+         <VBox.margin>
+            <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+         </VBox.margin>
+      </HBox>
+      <HBox alignment="CENTER_LEFT" layoutX="20.0" layoutY="20.0" prefHeight="39.0" prefWidth="492.0" spacing="10.0">
+         <children>
+            <Label text="Topic">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            <TextField fx:id="topicField" onAction="#onEnter" prefHeight="39.0" prefWidth="425.0">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </TextField>
+         </children>
+         <VBox.margin>
+            <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+         </VBox.margin>
+      </HBox>
+      <HBox alignment="CENTER_LEFT" layoutX="20.0" layoutY="79.0" spacing="10.0">
+         <VBox.margin>
+            <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+         </VBox.margin>
+         <children>
+            <Label fx:id="errorLabel" prefHeight="27.0" prefWidth="506.0" text="Error" textFill="RED">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+         </children>
+      </HBox>
+      <HBox alignment="CENTER" layoutX="20.0" layoutY="79.0" spacing="30.0">
+         <children>
+            <Button layoutX="10.0" layoutY="10.0" mnemonicParsing="false" fx:id="submitButton" onAction="#submitButton" text="Submit">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Button>
+            <Button mnemonicParsing="false" onAction="#cancelButton" text="Cancel">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Button>
+         </children>
+         <VBox.margin>
+            <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+         </VBox.margin>
+      </HBox>
+   </children>
+</VBox>
