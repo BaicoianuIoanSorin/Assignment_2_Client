@@ -1,9 +1,11 @@
 package model;
 
-import utility.observer.UnnamedPropertyChangeSubject;
+import utility.observer.subject.NamedPropertyChangeSubject;
 
 import java.util.ArrayList;
 
-public interface Model extends UnnamedPropertyChangeSubject
+public interface Model extends NamedPropertyChangeSubject
 {
+  void addLog(String log1);
+  void sendMessage(String message);
 }
