@@ -1,6 +1,5 @@
 import javafx.application.Application;
 import javafx.stage.Stage;
-import mediator.ExercisesServer;
 import model.Model;
 import model.ModelManager;
 import view.ViewHandler;
