@@ -9,14 +9,12 @@ import mediator.*;
 public class ModelManager implements Model
 {
   private ArrayList<String> log;
-  private User user;
   private PropertyChangeSupport propertyChangeSupport;
   private ChatClient client;
 
   public ModelManager(String host, int port) throws IOException
   {
     this.log = new ArrayList<>();
-    this.user = new User();
     client = new ChatClient(this, host, port);
   }
 
@@ -31,6 +29,10 @@ public class ModelManager implements Model
 
   }
 
+  @Override public ArrayList<String> getLog()
+  {
+    return log;
+  }
 
   @Override public void addListener(String propertyName,
       PropertyChangeListener listener)
