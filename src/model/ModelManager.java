@@ -28,8 +28,9 @@ public class ModelManager implements Model
 
   @Override public void sendMessage(String message)
   {
-    
+
   }
+
 
   @Override public void addListener(String propertyName,
       PropertyChangeListener listener)

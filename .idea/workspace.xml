@@ -24,7 +24,7 @@
   </component>
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/mediator" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="project.structure.last.edited" value="Global Libraries" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
@@ -60,25 +60,32 @@
     <servers />
   </component>
   <component name="WindowStateProjectService">
-    <state x="765" y="246" key="#com.intellij.ide.util.MemberChooser" timestamp="1616427332750">
-      <screen x="0" y="0" width="1920" height="1080" />
+    <state x="612" y="188" key="#com.intellij.ide.util.MemberChooser" timestamp="1616450756297">
+      <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="765" y="246" key="#com.intellij.ide.util.MemberChooser/-1920.0.1536.864/0.0.1920.1080@0.0.1920.1080" timestamp="1616427332750" />
-    <state x="690" y="287" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1616412065405">
-      <screen x="0" y="0" width="1920" height="1080" />
+    <state x="612" y="188" key="#com.intellij.ide.util.MemberChooser/0.0.1536.824@0.0.1536.824" timestamp="1616450756297" />
+    <state x="552" y="219" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1616512761429">
+      <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="690" y="287" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/-1920.0.1536.864/0.0.1920.1080@0.0.1920.1080" timestamp="1616412065405" />
+    <state x="552" y="219" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1536.824@0.0.1536.824" timestamp="1616512761429" />
     <state x="740" y="295" key="FileChooserDialogImpl" timestamp="1616425996889">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
     <state x="740" y="295" key="FileChooserDialogImpl/-1920.0.1536.864/0.0.1920.1080@0.0.1920.1080" timestamp="1616425996889" />
-    <state x="440" y="114" key="SettingsEditor" timestamp="1616411896273">
-      <screen x="0" y="0" width="1920" height="1080" />
+    <state x="352" y="0" key="SettingsEditor" timestamp="1616450176658">
+      <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="440" y="114" key="SettingsEditor/-1920.0.1536.864/0.0.1920.1080@0.0.1920.1080" timestamp="1616411896273" />
+    <state x="352" y="0" key="SettingsEditor/0.0.1536.824@0.0.1536.824" timestamp="1616450176658" />
     <state x="616" y="250" key="run.anything.popup" timestamp="1616411666263">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
     <state x="616" y="250" key="run.anything.popup/-1920.0.1536.864/0.0.1920.1080@0.0.1920.1080" timestamp="1616411666263" />
+    <state x="46" y="145" width="672" height="678" key="search.everywhere.popup" timestamp="1616450552296">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="46" y="145" width="672" height="678" key="search.everywhere.popup/0.0.1536.824@0.0.1536.824" timestamp="1616450552296" />
   </component>
 </project>
