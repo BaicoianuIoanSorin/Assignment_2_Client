@@ -6,99 +6,77 @@ import javafx.scene.layout.Region;
 import javafx.stage.Stage;
 import viewmodel.ViewModelFactory;
 
-public class ViewHandler
-{
-  private ViewModelFactory viewModelFactory;
-  private Stage primaryStage;
-  private Scene currentScene;
-  private ManageExerciseViewController manageExerciseViewController;
-  private ListExercisesViewController listExercisesViewController;
+public class ViewHandler {
+    private Scene currentScene;
+    private Stage primaryStage;
+    private ViewModelFactory viewModelFactory;
+    private LogViewController logViewController;
+    private ChatViewController chatViewController;
 
-  public ViewHandler(ViewModelFactory viewModelFactory)
-  {
-    this.viewModelFactory = viewModelFactory;
-  }
+    public ViewHandler(ViewModelFactory viewModelFactory) {
+        this.viewModelFactory = viewModelFactory;
+        currentScene = new Scene(new Region());
+    }
 
-  public void start(Stage primaryStage)
-  {
-    this.primaryStage = primaryStage;
-    this.currentScene = new Scene(new Region());
-    openView("list");
-  }
+    public void start(Stage primaryStage) {
+        this.primaryStage = primaryStage;
+        openView("Log");
+    }
 
-  public void openView(String id)
-  {
-    Region root = null;
-    switch (id)
-    {
-      case "list":
-        root = loadListView("ListExercisesView.fxml");
-        break;
-      case "manage":
-        root = loadManageView("ManageExerciseView.fxml");
-        break;
+    public void openView(String window) {
+        Region root = null;
+        switch (window) {
+            case "Log":
+                root = loadLogView("LogView.fxml");
+                break;
+            case "Chat":
+                root = loadChatView("ChatView.fxml");
+                break;
+        }
+        currentScene.setRoot(root);
+        String title = "";
+        if (root.getUserData() != null) {
+            title += root.getUserData();
+        }
+        primaryStage.setTitle(title);
+        primaryStage.setScene(currentScene);
+        primaryStage.setWidth(root.getPrefWidth());
+        primaryStage.setHeight(root.getPrefHeight());
     }
-    currentScene.setRoot(root);
 
-    String title = "";
-    if (root.getUserData() != null)
-    {
-      title += root.getUserData();
+    public Region loadLogView(String fxmlFile) {
+        if (logViewController == null) {
+            try {
+                FXMLLoader loader = new FXMLLoader();
+                loader.setLocation(getClass().getResource(fxmlFile));
+                Region root = loader.load();
+                logViewController = loader.getController();
+                logViewController.init(this, viewModelFactory.getLogViewModel(), root);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        } else {
+            logViewController.reset();
+        }
+        return logViewController.getRoot();
     }
-    primaryStage.setTitle(title);
-    primaryStage.setScene(currentScene);
-    primaryStage.setWidth(root.getPrefWidth());
-    primaryStage.setHeight(root.getPrefHeight());
-    primaryStage.show();
-  }
 
-  private Region loadListView(String fxmlFile)
-  {
-    if (listExercisesViewController == null)
-    {
-      try
-      {
-        FXMLLoader loader = new FXMLLoader();
-        loader.setLocation(getClass().getResource(fxmlFile));
-        Region root = loader.load();
-        listExercisesViewController = loader.getController();
-        listExercisesViewController
-            .init(this, viewModelFactory.getListExerciseViewModel(), root);
-      }
-      catch (Exception e)
-      {
-        e.printStackTrace();
-      }
+    public Region loadChatView(String fxmlFile) {
+        if (chatViewController == null) {
+            try {
+                FXMLLoader loader = new FXMLLoader();
+                loader.setLocation(getClass().getResource(fxmlFile));
+                Region root = loader.load();
+                chatViewController = loader.getController();
+                chatViewController.init(this, viewModelFactory.getChatViewModel(), root);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        } else {
+            chatViewController.reset();
+        }
+        return chatViewController.getRoot();
     }
-    else
-    {
-      listExercisesViewController.reset();
-    }
-    return listExercisesViewController.getRoot();
-  }
 
-  private Region loadManageView(String fxmlFile)
-  {
-    if (manageExerciseViewController == null)
-    {
-      try
-      {
-        FXMLLoader loader = new FXMLLoader();
-        loader.setLocation(getClass().getResource(fxmlFile));
-        Region root = loader.load();
-        manageExerciseViewController = loader.getController();
-        manageExerciseViewController
-            .init(this, viewModelFactory.getManageExerciseViewModel(), root);
-      }
-      catch (Exception e)
-      {
-        e.printStackTrace();
-      }
-    }
-    else
-    {
-      manageExerciseViewController.reset();
-    }
-    return manageExerciseViewController.getRoot();
-  }
 }
+
