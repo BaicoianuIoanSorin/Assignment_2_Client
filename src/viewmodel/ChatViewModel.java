@@ -7,13 +7,18 @@ import javafx.beans.property.StringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import model.Model;
+import utility.observer.UnnamedPropertyChangeSubject;
 
-public class ChatViewModel {
+import java.beans.PropertyChangeListener;
+import java.beans.PropertyChangeSupport;
+
+public class ChatViewModel implements UnnamedPropertyChangeSubject {
     private Model model;
     private ObservableList<String> messages;
     private StringProperty newMessage;
     private StringProperty userNameInfo;
     private IntegerProperty activeUsers;
+    private PropertyChangeSupport propertyChangeSupport;
 
     public ChatViewModel(Model model)
     {
@@ -23,7 +28,7 @@ public class ChatViewModel {
         userNameInfo = new SimpleStringProperty("");
         messages = FXCollections.observableArrayList();
         messages.addAll(model.getMessages(model.getMessages(userNameInfo.get())));
-
+        propertyChangeSupport = new PropertyChangeSupport(this);
     }
 
     public StringProperty getNewMessageProperty()
@@ -57,6 +62,16 @@ public class ChatViewModel {
 
     public void sendMessage()
     {
-        model.sendMessage(userNameInfo.get(), newMessage.get());
+        propertyChangeSupport.firePropertyChange(model.getName(),null,newMessage.get());
+    }
+
+    @Override
+    public void addListener(PropertyChangeListener listener) {
+        propertyChangeSupport.addPropertyChangeListener(listener);
+    }
+
+    @Override
+    public void removeListener(PropertyChangeListener listener) {
+        propertyChangeSupport.removePropertyChangeListener(listener);
     }
 }

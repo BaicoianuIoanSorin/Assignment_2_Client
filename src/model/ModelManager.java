@@ -25,7 +25,7 @@ public class ModelManager implements Model
 
   @Override
   public void login(String name) {
-    userList.addUser(name);
+    userList.addUser(name); // SENDING OUT THE INFO TO THE SERVER
     this.name = name;
     /** ->>> Property Change Support to be added(i think - Ionut) <<<- **/
 
@@ -33,70 +33,64 @@ public class ModelManager implements Model
 
   @Override public UserList getAllUsers()
   {
-    return userList;
+    return userList; //THIS SHOULD BE A REQUEST TO SERVER
   }
 
-  @Override public void addLog(String log1)
-  {
-    log.add(log1);
-    propertyChangeSupport.firePropertyChange("Log",null,log);
-  }
+//  @Override public void addLog(String log1)
+//  {
+//    log.add(log1);
+//    propertyChangeSupport.firePropertyChange("Log",null,log);
+//  }
 
   @Override public ArrayList<String> getLog()
   {
-    return log;
+    return log;  //SHOULD REQUEST FROM SERVER
   }
 
   @Override public int getConnectedUsersInt()
   {
-    return 0;
+    return 0; // A REQUEST FROM SERVER
   }
 
   @Override public ArrayList<String> getConnectedUsers()
   {
-    return null;
+    return null;  // A REQUEST FROM SERVER
   }
 
   @Override public void addListener(String propertyName,
                                     PropertyChangeListener listener)
   {
-    propertyChangeSupport.addPropertyChangeListener(propertyName,listener);
+    if(propertyName == null){
+      propertyChangeSupport.addPropertyChangeListener(listener);
+    }
+    else {
+      propertyChangeSupport.addPropertyChangeListener(propertyName, listener);
+    }
   }
 
   @Override public void removeListener(String propertyName,
                                        PropertyChangeListener listener)
   {
-    propertyChangeSupport.removePropertyChangeListener(propertyName, listener);
-
-  }
-
-  @Override
-  public ArrayList<String> getMessages(String activeUserName) {
-
-    for(int i = 0; i < userList.size(); i++)
-    {
-      if(userList.getUser(i).equals(activeUserName))
-      {
-        return userList.getUser(i).getMessages();
-      }
+    if(propertyName == null){
+      propertyChangeSupport.removePropertyChangeListener(listener);
     }
-    return null;
+    else {
+      propertyChangeSupport.removePropertyChangeListener(propertyName, listener);
+    }
   }
-
-  @Override
-  public ArrayList<String> getLog() {
-    return null;
-  }
-
-  @Override
-  public int getConnectedUsersInt() {
-    return 0;
-  }
-
-  @Override
-  public ArrayList<String> getConnectedUsers() {
-    return null;
-  }
+//
+//  @Override
+//  public ArrayList<String> getMessages(String activeUserName) {
+//
+//    for(int i = 0; i < userList.size(); i++)
+//    {
+//      if(userList.getUser(i).equals(activeUserName))
+//      {
+//        return userList.getUser(i).getMessages();
+//      }
+//    }
+//    return null;
+//  }
 
   @Override
   public String getName()
@@ -110,15 +104,15 @@ public class ModelManager implements Model
     return userList.size();
   }
 
-  @Override
-  public void sendMessage(String userName, String message)
-  {
-    for(int i = 0; i < userList.size(); i++)
-    {
-      if(userList.getUser(i).getName().equals(userName))
-      {
-        userList.getUser(i).addMessage(message);
-      }
-    }
-  }
+//  @Override
+//  public void sendMessage(String userName, String message)
+//  {
+//    for(int i = 0; i < userList.size(); i++)
+//    {
+//      if(userList.getUser(i).getName().equals(userName))
+//      {
+//        userList.getUser(i).addMessage(message);
+//      }
+//    }
+//  }
 }

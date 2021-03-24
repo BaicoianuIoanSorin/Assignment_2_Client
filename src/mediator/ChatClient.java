@@ -5,6 +5,7 @@ import model.Model;
 
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
+import java.beans.PropertyChangeSupport;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -22,6 +23,7 @@ public class ChatClient implements PropertyChangeListener
   private ChatClientReader reader;
   private ChatClientSender sender;
 
+
   public ChatClient(Model model, String host, int port) throws IOException
   {
     this.model = model;
@@ -31,6 +33,7 @@ public class ChatClient implements PropertyChangeListener
     gson = new Gson();
     reader = new ChatClientReader(in, this);
     sender = new ChatClientSender(out);
+    model.addListener(null,this);
   }
   public void receive(String message)
   {
