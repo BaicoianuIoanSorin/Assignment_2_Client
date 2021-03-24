@@ -27,7 +27,7 @@ public class ChatViewModel implements UnnamedPropertyChangeSubject {
         newMessage = new SimpleStringProperty("");
         userNameInfo = new SimpleStringProperty("");
         messages = FXCollections.observableArrayList();
-        messages.addAll(model.getMessages(model.getMessages(userNameInfo.get())));
+        messages.addAll(model.getLog());
         propertyChangeSupport = new PropertyChangeSupport(this);
     }
 

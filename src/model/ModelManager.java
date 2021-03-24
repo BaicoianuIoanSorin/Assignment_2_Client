@@ -10,17 +10,15 @@ public class ModelManager implements Model
   private ArrayList<String> messages;
   private String name;
   private PropertyChangeSupport propertyChangeSupport;
-  private UserList userList;
-  private ArrayList<MessageClientHandler> OnlineUsers;
+  private ArrayList<String> userList;
 
   public ModelManager()
   {
     this.name = "";
     this.messages = new ArrayList<>();
     this.log = new ArrayList<>();
-    this.userList = new UserList();
+
     this.propertyChangeSupport = new PropertyChangeSupport(this);
-    this.OnlineUsers = new ArrayList<>();
   }
 
   @Override
