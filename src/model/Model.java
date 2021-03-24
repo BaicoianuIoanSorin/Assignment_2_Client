@@ -6,7 +6,17 @@ import java.util.ArrayList;
 
 public interface Model extends NamedPropertyChangeSubject
 {
-  void addLog(String log1);
-  void sendMessage(String message);
+  void login(String name);
+  UserList getAllUsers();
+  void addLog(String log);
   ArrayList<String> getLog();
+<<<<<<< Updated upstream
+=======
+  int getConnectedUsersInt();
+  ArrayList<String> getConnectedUsers();
+  ArrayList<String> getMessages(String activeUserName);
+  String getName();
+  int getSizeOfUsers();
+  void sendMessage(String userName, String message);
+>>>>>>> Stashed changes
 }
