@@ -1,7 +1,5 @@
 package model;
 
-import mediator.MessageClientHandler;
-
 import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeSupport;
 import java.util.ArrayList;
@@ -9,11 +7,8 @@ import java.util.ArrayList;
 public class ModelManager implements Model
 {
   private ArrayList<String> log;
-<<<<<<< Updated upstream
-=======
   private ArrayList<String> messages;
   private String name;
->>>>>>> Stashed changes
   private PropertyChangeSupport propertyChangeSupport;
   private UserList userList;
   private ArrayList<MessageClientHandler> OnlineUsers;
@@ -23,9 +18,6 @@ public class ModelManager implements Model
     this.name = "";
     this.messages = new ArrayList<>();
     this.log = new ArrayList<>();
-<<<<<<< Updated upstream
-    client = new ChatClient(this, host, port);
-=======
     this.userList = new UserList();
     this.propertyChangeSupport = new PropertyChangeSupport(this);
     this.OnlineUsers = new ArrayList<>();
@@ -42,7 +34,6 @@ public class ModelManager implements Model
   @Override public UserList getAllUsers()
   {
     return userList;
->>>>>>> Stashed changes
   }
 
   @Override public void addLog(String log1)
@@ -61,15 +52,9 @@ public class ModelManager implements Model
     return 0;
   }
 
-<<<<<<< Updated upstream
-  @Override public ArrayList<String> getLog()
-  {
-    return log;
-=======
   @Override public ArrayList<String> getConnectedUsers()
   {
     return null;
->>>>>>> Stashed changes
   }
 
   @Override public void addListener(String propertyName,

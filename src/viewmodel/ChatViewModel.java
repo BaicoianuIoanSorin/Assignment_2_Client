@@ -22,7 +22,7 @@ public class ChatViewModel {
         newMessage = new SimpleStringProperty("");
         userNameInfo = new SimpleStringProperty("");
         messages = FXCollections.observableArrayList();
-        messages.addAll(model.getMessages(userNameInfo.get()));
+        messages.addAll(model.getMessages(model.getMessages(userNameInfo.get())));
 
     }
 
