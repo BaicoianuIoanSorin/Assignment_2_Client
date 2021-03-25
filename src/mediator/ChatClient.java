@@ -2,6 +2,7 @@ package mediator;
 
 import com.google.gson.Gson;
 import model.Model;
+import viewmodel.ChatViewModel;
 
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
@@ -12,7 +13,7 @@ import java.io.InputStreamReader;
 import java.io.PrintWriter;
 import java.net.Socket;
 import java.net.SocketException;
-
+// Needs to receive fires from ChatViewModel.
 public class ChatClient implements PropertyChangeListener
 {
   private Socket socket;
@@ -23,11 +24,14 @@ public class ChatClient implements PropertyChangeListener
   private ChatClientReader reader;
   private ChatClientSender sender;
   private PropertyChangeSupport propertyChangeSupport;
+  private ChatViewModel viewModel;
 
 
   public ChatClient(Model model, String host, int port) throws IOException
   {
     this.model = model;
+    viewModel = ChatViewModel.getInstance(model);
+    viewModel.addListener(this);
     socket = new Socket(host, port);
     out = new PrintWriter(socket.getOutputStream(), true);
     in = new BufferedReader(new BufferedReader(new InputStreamReader(socket.getInputStream())));

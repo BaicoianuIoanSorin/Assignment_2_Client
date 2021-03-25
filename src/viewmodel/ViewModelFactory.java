@@ -8,7 +8,7 @@ public class ViewModelFactory {
 
     public ViewModelFactory(Model model)
     {
-        this.chatViewModel = new ChatViewModel(model);
+        this.chatViewModel = ChatViewModel.getInstance(model);
         this.logViewModel = new LogViewModel(model);
     }
 

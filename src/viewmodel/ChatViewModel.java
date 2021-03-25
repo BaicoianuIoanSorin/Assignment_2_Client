@@ -20,8 +20,10 @@ public class ChatViewModel implements UnnamedPropertyChangeSubject, PropertyChan
     private StringProperty userNameInfo;
     private StringProperty activeUsers;
     private PropertyChangeSupport propertyChangeSupport;
+    private static ChatViewModel instance;
+    private static Object lock = new Object();
 
-    public ChatViewModel(Model model)
+    private ChatViewModel(Model model)
     {
         this.model = model;
         activeUsers = new SimpleStringProperty();
@@ -32,6 +34,20 @@ public class ChatViewModel implements UnnamedPropertyChangeSubject, PropertyChan
         propertyChangeSupport = new PropertyChangeSupport(this);
     }
 
+    public static ChatViewModel getInstance(Model model)
+    {
+        if(instance ==null)
+        {
+            synchronized (lock)
+            {
+                if (instance==null)
+                {
+                    instance = new ChatViewModel(model);
+                }
+            }
+        }
+        return instance;
+    }
     public StringProperty getNewMessageProperty()
     {
         return newMessage;
