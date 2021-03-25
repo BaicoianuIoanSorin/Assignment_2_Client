@@ -23,15 +23,15 @@ public class ModelManager implements Model
 
   @Override
   public void login(String name) {
-    userList.addUser(name); // SENDING OUT THE INFO TO THE SERVER
+    userList.add(name); 
     this.name = name;
     /** ->>> Property Change Support to be added(i think - Ionut) <<<- **/
 
   }
 
-  @Override public UserList getAllUsers()
+  @Override public ArrayList<String> getAllUsers()
   {
-    return userList; //THIS SHOULD BE A REQUEST TO SERVER
+    return userList;
   }
 
   @Override public void addLogs(ArrayList<String> logs)
@@ -41,17 +41,7 @@ public class ModelManager implements Model
 
   @Override public ArrayList<String> getLogs()
   {
-    return log;  //SHOULD REQUEST FROM SERVER
-  }
-
-  @Override public int getConnectedUsersInt()
-  {
-    return 0; // A REQUEST FROM SERVER
-  }
-
-  @Override public ArrayList<String> getConnectedUsers()
-  {
-    return null;  // A REQUEST FROM SERVER
+    return log;
   }
 
   @Override public void addListener(String propertyName,

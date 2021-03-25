@@ -7,7 +7,7 @@ import java.util.ArrayList;
 public interface Model extends NamedPropertyChangeSubject
 {
   void login(String name);
-  UserList getAllUsers();
+  ArrayList<String> getAllUsers();
   void addLogs(ArrayList<String> logs);
   ArrayList<String> getLogs();
   int getConnectedUsersInt();
