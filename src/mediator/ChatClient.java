@@ -38,7 +38,7 @@ public class ChatClient implements PropertyChangeListener
     gson = new Gson();
     reader = new ChatClientReader(in, this);
 
-    model.addListener(null,this);
+    this.model.addListener(null,this);
     propertyChangeSupport = new PropertyChangeSupport(this);
     sender = new ChatClientSender(out, model);
     Thread thread = new Thread(reader);
