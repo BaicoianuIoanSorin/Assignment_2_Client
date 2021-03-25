@@ -29,11 +29,6 @@ public class ModelManager implements Model
 
   }
 
-  @Override public ArrayList<String> getAllUsers()
-  {
-    return userList;
-  }
-
   @Override public void addLogs(ArrayList<String> logs)
   {
     log = logs;
@@ -83,12 +78,6 @@ public class ModelManager implements Model
   public String getName()
   {
     return name;
-  }
-
-  @Override
-  public int getSizeOfUsers()
-  {
-    return userList.size();
   }
 
 //  @Override

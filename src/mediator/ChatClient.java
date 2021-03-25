@@ -50,7 +50,7 @@ public class ChatClient implements PropertyChangeListener
           }
           case "getUsersNames":
           {
-            
+
           }
         }
     }
