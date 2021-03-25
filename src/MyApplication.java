@@ -15,9 +15,10 @@ public class MyApplication extends Application
   public void start(Stage primaryStage) throws IOException {
 
     Model model = new ModelManager();
+    ChatClient chatClient = new ChatClient(model, "localhost", 2021);
     ViewModelFactory viewModelFactory = new ViewModelFactory(model);
     ViewHandler view = new ViewHandler(viewModelFactory);
-    ChatClient chatClient = new ChatClient(model, "localhost", 2910);
+
     view.start(primaryStage);
   }
   @Override public void stop() throws IOException {
