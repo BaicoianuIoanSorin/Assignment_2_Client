@@ -34,13 +34,12 @@ public class ModelManager implements Model
     return userList; //THIS SHOULD BE A REQUEST TO SERVER
   }
 
-//  @Override public void addLog(String log1)
-//  {
-//    log.add(log1);
-//    propertyChangeSupport.firePropertyChange("Log",null,log);
-//  }
+  @Override public void addLogs(ArrayList<String> logs)
+  {
+    log = logs;
+  }
 
-  @Override public ArrayList<String> getLog()
+  @Override public ArrayList<String> getLogs()
   {
     return log;  //SHOULD REQUEST FROM SERVER
   }

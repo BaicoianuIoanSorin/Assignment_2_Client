@@ -20,7 +20,7 @@ public class SendOutPackage {
         this.message = null;
     }
 
-    public SendOutPackage(ArrayList log){
+    public SendOutPackage(ArrayList<String> log){
         this.log = log;
         this.messageSenderName = null;
         this.message = null;

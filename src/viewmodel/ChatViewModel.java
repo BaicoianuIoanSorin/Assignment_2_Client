@@ -9,25 +9,26 @@ import javafx.collections.ObservableList;
 import model.Model;
 import utility.observer.UnnamedPropertyChangeSubject;
 
+import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeSupport;
 
-public class ChatViewModel implements UnnamedPropertyChangeSubject {
+public class ChatViewModel implements UnnamedPropertyChangeSubject, PropertyChangeListener {
     private Model model;
     private ObservableList<String> messages;
     private StringProperty newMessage;
     private StringProperty userNameInfo;
-    private IntegerProperty activeUsers;
+    private StringProperty activeUsers;
     private PropertyChangeSupport propertyChangeSupport;
 
     public ChatViewModel(Model model)
     {
         this.model = model;
-        activeUsers = new SimpleIntegerProperty(model.getSizeOfUsers());
+        activeUsers = new SimpleStringProperty();
         newMessage = new SimpleStringProperty("");
         userNameInfo = new SimpleStringProperty("");
         messages = FXCollections.observableArrayList();
-        messages.addAll(model.getLog());
+        messages.addAll(model.getLogs());
         propertyChangeSupport = new PropertyChangeSupport(this);
     }
 
@@ -41,7 +42,7 @@ public class ChatViewModel implements UnnamedPropertyChangeSubject {
         return userNameInfo;
     }
 
-    public IntegerProperty getActiveUsersProperty()
+    public StringProperty getActiveUsersProperty()
     {
         return activeUsers;
     }
@@ -57,7 +58,7 @@ public class ChatViewModel implements UnnamedPropertyChangeSubject {
         messages.clear();
         messages.addAll(model.getMessages(userNameInfo.get()));
         newMessage.set("");
-        activeUsers.set(model.getSizeOfUsers());
+        activeUsers.set(null);
     }
 
     public void sendMessage()
@@ -73,5 +74,13 @@ public class ChatViewModel implements UnnamedPropertyChangeSubject {
     @Override
     public void removeListener(PropertyChangeListener listener) {
         propertyChangeSupport.removePropertyChangeListener(listener);
+    }
+
+    @Override public void propertyChange(PropertyChangeEvent evt)
+    {
+        if(evt.getPropertyName().equals("getUserCount"))
+        {
+            activeUsers.set((String)evt.getNewValue());
+        }
     }
 }

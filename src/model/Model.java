@@ -8,8 +8,8 @@ public interface Model extends NamedPropertyChangeSubject
 {
   void login(String name);
   UserList getAllUsers();
-  void addLog(String log);
-  ArrayList<String> getLog();
+  void addLogs(ArrayList<String> logs);
+  ArrayList<String> getLogs();
   int getConnectedUsersInt();
   ArrayList<String> getConnectedUsers();
   ArrayList<String> getMessages(String activeUserName);

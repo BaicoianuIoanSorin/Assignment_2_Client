@@ -22,6 +22,7 @@ public class ChatClient implements PropertyChangeListener
   private Model model;
   private ChatClientReader reader;
   private ChatClientSender sender;
+  private PropertyChangeSupport propertyChangeSupport;
 
 
   public ChatClient(Model model, String host, int port) throws IOException
@@ -34,17 +35,28 @@ public class ChatClient implements PropertyChangeListener
     reader = new ChatClientReader(in, this);
     sender = new ChatClientSender(out);
     model.addListener(null,this);
+    propertyChangeSupport = new PropertyChangeSupport(this);
   }
   public void receive(String message)
   {
     SendOutPackage sendOutPackage = gson.fromJson(message, SendOutPackage.class);
     if(sendOutPackage.isCommand())
     {
-
+        switch (sendOutPackage.getCommand())
+        {
+          case "getUserCount":
+          {
+            propertyChangeSupport.firePropertyChange("getUserCount", null, sendOutPackage.getMessage());
+          }
+          case "getUsersNames":
+          {
+            
+          }
+        }
     }
     else
     {
-
+        model.addLogs(sendOutPackage.getLog());
     }
   }
 
