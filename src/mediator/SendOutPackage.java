@@ -27,6 +27,10 @@ public class SendOutPackage {
         this.command = null;
     }
 
+    public ArrayList<String> getLog() {
+        return log;
+    }
+
     public String getCommand() {
         return command;
     }
