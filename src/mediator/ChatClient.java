@@ -33,9 +33,12 @@ public class ChatClient implements PropertyChangeListener
     in = new BufferedReader(new BufferedReader(new InputStreamReader(socket.getInputStream())));
     gson = new Gson();
     reader = new ChatClientReader(in, this);
+
     model.addListener(null,this);
     propertyChangeSupport = new PropertyChangeSupport(this);
     sender = new ChatClientSender(out, model);
+    Thread thread = new Thread(reader);
+    thread.start();
   }
   public void receive(String message)
   {
@@ -70,5 +73,9 @@ public class ChatClient implements PropertyChangeListener
     {
       sender.send((String)evt.getNewValue());
     }
+  }
+  public void close() throws IOException
+  {
+    socket.close();
   }
 }
