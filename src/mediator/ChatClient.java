@@ -65,12 +65,14 @@ public class ChatClient implements PropertyChangeListener
 
   @Override public void propertyChange(PropertyChangeEvent evt)
   {
+    System.out.println("Received");
     if(evt.getPropertyName().equals("addUser"))
     {
       sender.sendUser((String)evt.getNewValue());
     }
     else
     {
+      System.out.println((String)evt.getNewValue());
       sender.send((String)evt.getNewValue());
     }
   }

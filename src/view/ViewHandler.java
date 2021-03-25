@@ -15,11 +15,11 @@ public class ViewHandler {
 
     public ViewHandler(ViewModelFactory viewModelFactory) {
         this.viewModelFactory = viewModelFactory;
-        currentScene = new Scene(new Region());
     }
 
     public void start(Stage primaryStage) {
         this.primaryStage = primaryStage;
+        this.currentScene = new Scene(new Region());
         openView("Log");
     }
 
@@ -42,6 +42,7 @@ public class ViewHandler {
         primaryStage.setScene(currentScene);
         primaryStage.setWidth(root.getPrefWidth());
         primaryStage.setHeight(root.getPrefHeight());
+        primaryStage.show();
     }
 
     public Region loadLogView(String fxmlFile) {

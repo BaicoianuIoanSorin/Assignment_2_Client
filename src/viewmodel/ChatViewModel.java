@@ -63,6 +63,7 @@ public class ChatViewModel implements UnnamedPropertyChangeSubject, PropertyChan
 
     public void sendMessage()
     {
+        System.out.println(model.getName() + " " + newMessage.get());
         propertyChangeSupport.firePropertyChange(model.getName(),null,newMessage.get());
     }
 

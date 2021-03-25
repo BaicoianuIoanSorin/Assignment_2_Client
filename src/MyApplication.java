@@ -13,13 +13,19 @@ public class MyApplication extends Application
   private ChatClient chatClient;
 
   public void start(Stage primaryStage) throws IOException {
+    try
+    {
+      Model model = new ModelManager();
+      ChatClient chatClient = new ChatClient(model, "localhost", 2021);
+      ViewModelFactory viewModelFactory = new ViewModelFactory(model);
+      ViewHandler view = new ViewHandler(viewModelFactory);
 
-    Model model = new ModelManager();
-    ChatClient chatClient = new ChatClient(model, "localhost", 2021);
-    ViewModelFactory viewModelFactory = new ViewModelFactory(model);
-    ViewHandler view = new ViewHandler(viewModelFactory);
-
-    view.start(primaryStage);
+      view.start(primaryStage);
+    }
+    catch (Exception e)
+    {
+      e.printStackTrace();
+    }
   }
   @Override public void stop() throws IOException {
     chatClient.close();
