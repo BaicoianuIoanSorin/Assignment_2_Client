@@ -10,4 +10,5 @@ public interface Model extends NamedPropertyChangeSubject
   void addLogs(ArrayList<String> logs);
   ArrayList<String> getLogs();
   String getName();
+  void addLog(String log);
 }

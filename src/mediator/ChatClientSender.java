@@ -17,7 +17,20 @@ public class ChatClientSender
 
   public void send(String messageToSend)
   {
-    SendOutPackage sendOutPackage = new SendOutPackage (gson.toJson(messageToSend, SendOutPackage.class));
-    out.println(sendOutPackage);
+    String json;
+    switch (messageToSend)
+    {
+      case "getUserCount":
+      {
+        SendOutPackage sendOutPackage = new SendOutPackage(messageToSend);
+        json = gson.toJson(sendOutPackage, SendOutPackage.class);
+      }
+      case "getUsersNames":
+      {
+        SendOutPackage sendOutPackage = new SendOutPackage(messageToSend);
+        json = gson.toJson(sendOutPackage, SendOutPackage.class);
+      }
+      default:
+    }
   }
 }

@@ -56,7 +56,7 @@ public class ChatViewModel implements UnnamedPropertyChangeSubject, PropertyChan
     {
         /** ->>> More variables to be added <<<- **/
         messages.clear();
-        messages.addAll(model.getMessages(userNameInfo.get()));
+        messages.addAll(model.getLogs());
         newMessage.set("");
         activeUsers.set(null);
     }

@@ -80,7 +80,12 @@ public class ModelManager implements Model
     return name;
   }
 
-//  @Override
+  @Override public void addLog(String log)
+  {
+    this.log.add(log);
+  }
+
+  //  @Override
 //  public void sendMessage(String userName, String message)
 //  {
 //    for(int i = 0; i < userList.size(); i++)
