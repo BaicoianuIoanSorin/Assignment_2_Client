@@ -10,7 +10,6 @@ public class ModelManager implements Model
   private ArrayList<String> messages;
   private String name;
   private PropertyChangeSupport propertyChangeSupport;
-  private ArrayList<String> userList;
 
   public ModelManager()
   {
@@ -23,7 +22,6 @@ public class ModelManager implements Model
 
   @Override
   public void login(String name) {
-    userList.add(name); 
     this.name = name;
     propertyChangeSupport.firePropertyChange("addUser", null, name);
     /** ->>> Property Change Support to be added(i think - Ionut) <<<- **/
