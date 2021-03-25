@@ -8,6 +8,7 @@ public class SendOutPackage {
     private String command;
     private boolean isCommand;
     private ArrayList<String> log;
+    private String commandName;
 
     public SendOutPackage(String messageName,String message){
         this.messageSenderName = messageName;
@@ -16,6 +17,7 @@ public class SendOutPackage {
     }
 
     public SendOutPackage(String commandName,String command, boolean isCommand){
+        this.commandName = commandName;
         this.command = command;
         this.isCommand = isCommand;
         this.messageSenderName = null;
