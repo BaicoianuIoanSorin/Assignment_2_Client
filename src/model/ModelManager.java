@@ -25,6 +25,7 @@ public class ModelManager implements Model
   public void login(String name) {
     userList.add(name); 
     this.name = name;
+    propertyChangeSupport.firePropertyChange("addUser", null, name);
     /** ->>> Property Change Support to be added(i think - Ionut) <<<- **/
 
   }

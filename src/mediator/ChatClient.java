@@ -33,9 +33,9 @@ public class ChatClient implements PropertyChangeListener
     in = new BufferedReader(new BufferedReader(new InputStreamReader(socket.getInputStream())));
     gson = new Gson();
     reader = new ChatClientReader(in, this);
-    sender = new ChatClientSender(out);
     model.addListener(null,this);
     propertyChangeSupport = new PropertyChangeSupport(this);
+    sender = new ChatClientSender(out, model);
   }
   public void receive(String message)
   {
@@ -62,6 +62,13 @@ public class ChatClient implements PropertyChangeListener
 
   @Override public void propertyChange(PropertyChangeEvent evt)
   {
-    sender.send((String)evt.getNewValue());
+    if(evt.getPropertyName().equals("addUser"))
+    {
+      sender.sendUser((String)evt.getNewValue());
+    }
+    else
+    {
+      sender.send((String)evt.getNewValue());
+    }
   }
 }

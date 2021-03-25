@@ -39,6 +39,11 @@ public class SendOutPackage {
         return command;
     }
 
+    public String getCommandName()
+    {
+        return commandName;
+    }
+
     public String getMessage() {
         return message;
     }
