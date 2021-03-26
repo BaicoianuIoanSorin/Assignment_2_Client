@@ -1,30 +1,23 @@
 package model;
 
-import mediator.ChatClient;
-
-import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeSupport;
-import java.io.IOException;
 import java.util.ArrayList;
 
-public class ModelManager implements Model,PropertyChangeListener
+public class ModelManager implements Model
 {
   private ArrayList<String> log;
   private ArrayList<String> messages;
   private String name;
   private PropertyChangeSupport propertyChangeSupport;
-  private ChatClient chatClient;
 
-  public ModelManager() throws IOException
+  public ModelManager()
   {
     this.name = "";
     this.messages = new ArrayList<>();
     this.log = new ArrayList<>();
-    this.propertyChangeSupport = new PropertyChangeSupport(this);
-    chatClient = new ChatClient(this,"localhost",2021);
-    chatClient.addListener(this);
 
+    this.propertyChangeSupport = new PropertyChangeSupport(this);
   }
 
   @Override
@@ -102,10 +95,4 @@ public class ModelManager implements Model,PropertyChangeListener
 //      }
 //    }
 //  }
-
-
-  @Override
-  public void propertyChange(PropertyChangeEvent evt) {
-    propertyChangeSupport.firePropertyChange(evt.getPropertyName(),evt.getOldValue(),evt.getNewValue());
-  }
 }

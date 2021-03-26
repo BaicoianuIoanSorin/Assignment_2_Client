@@ -13,7 +13,7 @@ import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeSupport;
 
-public class ChatViewModel implements PropertyChangeListener {
+public class ChatViewModel implements UnnamedPropertyChangeSubject, PropertyChangeListener {
     private Model model;
     private ObservableList<String> messages;
     private StringProperty newMessage;
@@ -32,7 +32,6 @@ public class ChatViewModel implements PropertyChangeListener {
         messages = FXCollections.observableArrayList();
         messages.addAll(model.getLogs());
         propertyChangeSupport = new PropertyChangeSupport(this);
-        model.addListener(null,this);
     }
 
     public static ChatViewModel getInstance(Model model)
@@ -81,7 +80,17 @@ public class ChatViewModel implements PropertyChangeListener {
     public void sendMessage()
     {
         System.out.println(model.getName() + " " + newMessage.get());
-        propertyChangeSupport.firePropertyChange("Message",null,newMessage.get());
+        propertyChangeSupport.firePropertyChange(model.getName(),null,newMessage.get());
+    }
+
+    @Override
+    public void addListener(PropertyChangeListener listener) {
+        propertyChangeSupport.addPropertyChangeListener(listener);
+    }
+
+    @Override
+    public void removeListener(PropertyChangeListener listener) {
+        propertyChangeSupport.removePropertyChangeListener(listener);
     }
 
     @Override public void propertyChange(PropertyChangeEvent evt)
@@ -89,12 +98,6 @@ public class ChatViewModel implements PropertyChangeListener {
         if(evt.getPropertyName().equals("getUserCount"))
         {
             activeUsers.set((String)evt.getNewValue());
-        }
-        else if(evt.getPropertyName().equals("Message"))
-        {
-            messages.add((String)evt.getNewValue());
-            System.out.println((String)evt.getNewValue());
-            reset();
         }
     }
 }
