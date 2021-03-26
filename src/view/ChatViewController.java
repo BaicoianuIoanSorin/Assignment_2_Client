@@ -32,7 +32,9 @@ public class ChatViewController {
         this.root = root;
         userNameInfo.textProperty().set(viewModel.getUserNameInfoProperty().get());
         activeUsers.textProperty().bind(viewModel.getActiveUsersProperty());
-        messages.itemsProperty().set(viewModel.getListOfMessages());
+        //messages.itemsProperty().bind(viewModel.getListOfMessages());
+        //messages.getCellFactory();
+        messages.setItems(viewModel.getListOfMessages());
         newMessage.textProperty().bindBidirectional(viewModel.getNewMessageProperty());
     }
 

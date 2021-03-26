@@ -31,6 +31,8 @@ public class ModelManager implements Model
   @Override public void addLogs(ArrayList<String> logs)
   {
     log = logs;
+    System.out.println("Reached add logs class");
+    propertyChangeSupport.firePropertyChange("DisplayLog",null,log);
   }
 
   @Override public ArrayList<String> getLogs()
@@ -76,6 +78,7 @@ public class ModelManager implements Model
   @Override
   public String getName()
   {
+
     return name;
   }
 

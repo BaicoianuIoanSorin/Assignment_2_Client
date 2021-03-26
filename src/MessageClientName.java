@@ -1,6 +1,6 @@
 import javafx.application.Application;
 
-public class ExerciseMain
+public class MessageClientName
 {
   public static void main(String[] args)
   {

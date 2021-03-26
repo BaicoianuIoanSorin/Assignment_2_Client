@@ -13,6 +13,8 @@ import java.io.InputStreamReader;
 import java.io.PrintWriter;
 import java.net.Socket;
 import java.net.SocketException;
+import java.util.ArrayList;
+
 // Needs to receive fires from ChatViewModel.
 public class ChatClient implements PropertyChangeListener
 {
@@ -34,7 +36,7 @@ public class ChatClient implements PropertyChangeListener
     viewModel.addListener(this);
     socket = new Socket(host, port);
     out = new PrintWriter(socket.getOutputStream(), true);
-    in = new BufferedReader(new BufferedReader(new InputStreamReader(socket.getInputStream())));
+    in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
     gson = new Gson();
     reader = new ChatClientReader(in, this);
 
@@ -47,6 +49,7 @@ public class ChatClient implements PropertyChangeListener
   public void receive(String message)
   {
     SendOutPackage sendOutPackage = gson.fromJson(message, SendOutPackage.class);
+    System.out.println("Entered receive" + sendOutPackage.getLog().toString());
     if(sendOutPackage.isCommand())
     {
         switch (sendOutPackage.getCommand())
@@ -61,22 +64,23 @@ public class ChatClient implements PropertyChangeListener
           }
         }
     }
-    else
+   else
     {
+      System.out.println("Entered else statment");
         model.addLogs(sendOutPackage.getLog());
     }
   }
 
   @Override public void propertyChange(PropertyChangeEvent evt)
   {
-    System.out.println("Received");
+    System.out.println("PropertyChange fires in ChatClient");
     if(evt.getPropertyName().equals("addUser"))
     {
       sender.sendUser((String)evt.getNewValue());
     }
-    else
+    else if(!evt.getPropertyName().equals("DisplayLog"))
     {
-      System.out.println((String)evt.getNewValue());
+      System.out.println("PropertyChange fires in ChatClient(in else)" + (String)evt.getNewValue());
       sender.send((String)evt.getNewValue());
     }
   }

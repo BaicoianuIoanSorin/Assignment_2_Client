@@ -1,5 +1,6 @@
 package viewmodel;
 
+import javafx.application.Platform;
 import javafx.beans.property.IntegerProperty;
 import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleStringProperty;
@@ -12,6 +13,7 @@ import utility.observer.UnnamedPropertyChangeSubject;
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeSupport;
+import java.util.ArrayList;
 
 public class ChatViewModel implements UnnamedPropertyChangeSubject, PropertyChangeListener {
     private Model model;
@@ -32,6 +34,7 @@ public class ChatViewModel implements UnnamedPropertyChangeSubject, PropertyChan
         messages = FXCollections.observableArrayList();
         messages.addAll(model.getLogs());
         propertyChangeSupport = new PropertyChangeSupport(this);
+        model.addListener(null,this);
     }
 
     public static ChatViewModel getInstance(Model model)
@@ -79,7 +82,7 @@ public class ChatViewModel implements UnnamedPropertyChangeSubject, PropertyChan
 
     public void sendMessage()
     {
-        System.out.println(model.getName() + " " + newMessage.get());
+        System.out.println(model.getName() + "->" + newMessage.get());
         propertyChangeSupport.firePropertyChange(model.getName(),null,newMessage.get());
     }
 
@@ -95,9 +98,20 @@ public class ChatViewModel implements UnnamedPropertyChangeSubject, PropertyChan
 
     @Override public void propertyChange(PropertyChangeEvent evt)
     {
-        if(evt.getPropertyName().equals("getUserCount"))
-        {
-            activeUsers.set((String)evt.getNewValue());
-        }
+        Platform.runLater(()->{
+            messages.clear();
+            System.out.println("TESTING FIRES" + evt.getNewValue());
+            if(evt.getPropertyName().equals("getUserCount"))
+            {
+                activeUsers.set((String)evt.getNewValue());
+            }
+            else if(evt.getPropertyName().equals("getUsersNames")){
+                messages.add((String) evt.getNewValue());
+            }
+            else if(evt.getPropertyName().equals("DisplayLog")){
+
+                messages.addAll((ArrayList<String>)evt.getNewValue());
+            }
+        });
     }
 }
