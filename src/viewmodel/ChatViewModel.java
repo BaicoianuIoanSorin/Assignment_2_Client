@@ -25,6 +25,7 @@ public class ChatViewModel implements UnnamedPropertyChangeSubject, PropertyChan
     private static ChatViewModel instance;
     private static Object lock = new Object();
 
+
     private ChatViewModel(Model model)
     {
         this.model = model;
@@ -34,7 +35,7 @@ public class ChatViewModel implements UnnamedPropertyChangeSubject, PropertyChan
         messages = FXCollections.observableArrayList();
         messages.addAll(model.getLogs());
         propertyChangeSupport = new PropertyChangeSupport(this);
-        model.addListener(null,this);
+        this.model.addListener(null,this);
     }
 
     public static ChatViewModel getInstance(Model model)
@@ -82,7 +83,6 @@ public class ChatViewModel implements UnnamedPropertyChangeSubject, PropertyChan
 
     public void sendMessage()
     {
-        System.out.println(model.getName() + "->" + newMessage.get());
         propertyChangeSupport.firePropertyChange(model.getName(),null,newMessage.get());
     }
 
@@ -100,7 +100,6 @@ public class ChatViewModel implements UnnamedPropertyChangeSubject, PropertyChan
     {
         Platform.runLater(()->{
             messages.clear();
-            System.out.println("TESTING FIRES" + evt.getNewValue());
             if(evt.getPropertyName().equals("getUserCount"))
             {
                 activeUsers.set((String)evt.getNewValue());

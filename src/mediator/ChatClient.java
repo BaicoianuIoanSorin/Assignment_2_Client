@@ -2,6 +2,7 @@ package mediator;
 
 import com.google.gson.Gson;
 import model.Model;
+import utility.observer.subject.PropertyChangeSubject;
 import viewmodel.ChatViewModel;
 
 import java.beans.PropertyChangeEvent;
@@ -16,7 +17,7 @@ import java.net.SocketException;
 import java.util.ArrayList;
 
 // Needs to receive fires from ChatViewModel.
-public class ChatClient implements PropertyChangeListener
+public class ChatClient implements PropertyChangeListener, PropertyChangeSubject
 {
   private Socket socket;
   private BufferedReader in;
@@ -27,7 +28,6 @@ public class ChatClient implements PropertyChangeListener
   private ChatClientSender sender;
   private PropertyChangeSupport propertyChangeSupport;
   private ChatViewModel viewModel;
-
 
   public ChatClient(Model model, String host, int port) throws IOException
   {
@@ -49,7 +49,6 @@ public class ChatClient implements PropertyChangeListener
   public void receive(String message)
   {
     SendOutPackage sendOutPackage = gson.fromJson(message, SendOutPackage.class);
-    System.out.println("Entered receive" + sendOutPackage.getLog().toString());
     if(sendOutPackage.isCommand())
     {
         switch (sendOutPackage.getCommand())
@@ -66,26 +65,45 @@ public class ChatClient implements PropertyChangeListener
     }
    else
     {
-      System.out.println("Entered else statment");
         model.addLogs(sendOutPackage.getLog());
     }
   }
 
   @Override public void propertyChange(PropertyChangeEvent evt)
   {
-    System.out.println("PropertyChange fires in ChatClient");
     if(evt.getPropertyName().equals("addUser"))
     {
       sender.sendUser((String)evt.getNewValue());
     }
     else if(!evt.getPropertyName().equals("DisplayLog"))
     {
-      System.out.println("PropertyChange fires in ChatClient(in else)" + (String)evt.getNewValue());
       sender.send((String)evt.getNewValue());
     }
   }
   public void close() throws IOException
   {
     socket.close();
+  }
+
+  @Override public void addListener(String propertyName,
+      PropertyChangeListener listener)
+  {
+    propertyChangeSupport.addPropertyChangeListener(propertyName, listener);
+  }
+
+  @Override public void removeListener(String propertyName,
+      PropertyChangeListener listener)
+  {
+    propertyChangeSupport.removePropertyChangeListener(propertyName, listener);
+  }
+
+  @Override public void addListener(PropertyChangeListener listener)
+  {
+    propertyChangeSupport.addPropertyChangeListener(listener);
+  }
+
+  @Override public void removeListener(PropertyChangeListener listener)
+  {
+    propertyChangeSupport.removePropertyChangeListener(listener);
   }
 }

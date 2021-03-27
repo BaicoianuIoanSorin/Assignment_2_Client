@@ -25,18 +25,21 @@ public class ChatClientSender
     {
       case "getUserCount":
       {
-        SendOutPackage sendOutPackage = new SendOutPackage(null, messageToSend, true);
+        SendOutPackage sendOutPackage = new SendOutPackage("getUserCount", messageToSend, true);
         json = gson.toJson(sendOutPackage, SendOutPackage.class);
+        break;
       }
       case "getUsersNames":
       {
         SendOutPackage sendOutPackage = new SendOutPackage(null, messageToSend, true);
         json = gson.toJson(sendOutPackage, SendOutPackage.class);
+        break;
       }
       default:
       {
         SendOutPackage sendOutPackage = new SendOutPackage(model.getName(), messageToSend);
         json = gson.toJson(sendOutPackage, SendOutPackage.class);
+        break;
       }
     }
     out.println(json);

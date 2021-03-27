@@ -7,13 +7,22 @@
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="ProjectId" id="1qKuwTfzMnrJrtMaJn22Fm2yNer" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
   <component name="PropertiesComponent">
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../Assignment_2_Server" />
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="project.structure.last.edited" value="Global Libraries" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="Application.MessageClientName">
     <configuration name="ExerciseMain" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="ExerciseMain" />
       <module name="Assignment_2_Client" />
@@ -21,43 +30,65 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="MessageClientName" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="MessageClientName" />
+      <module name="Assignment_2_Client" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.MessageClientName" />
         <item itemvalue="Application.ExerciseMain" />
       </list>
     </recent_temporary>
   </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="e8cacae4-b883-4bf7-afb2-0c1c70442f6b" name="Default Changelist" comment="" />
+      <created>1616840841192</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1616840841192</updated>
+    </task>
     <servers />
   </component>
   <component name="WindowStateProjectService">
-    <state x="765" y="246" key="#com.intellij.ide.util.MemberChooser" timestamp="1616664906054">
-      <screen x="0" y="0" width="1920" height="1080" />
+    <state x="612" y="197" key="#com.intellij.ide.util.MemberChooser" timestamp="1616843419182">
+      <screen x="0" y="0" width="1536" height="864" />
     </state>
     <state x="765" y="246" key="#com.intellij.ide.util.MemberChooser/-1920.0.1536.864/0.0.1920.1080@0.0.1920.1080" timestamp="1616664906054" />
+    <state x="612" y="197" key="#com.intellij.ide.util.MemberChooser/0.0.1536.864@0.0.1536.864" timestamp="1616843419182" />
     <state x="740" y="295" key="FileChooserDialogImpl" timestamp="1616666233713">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
     <state x="740" y="295" key="FileChooserDialogImpl/-1920.0.1536.864/0.0.1920.1080@0.0.1920.1080" timestamp="1616666233713" />
-    <state width="900" height="344" key="GridCell.Tab.0.bottom" timestamp="1616673595074">
-      <screen x="0" y="0" width="1920" height="1080" />
+    <state width="723" height="223" key="GridCell.Tab.0.bottom" timestamp="1616844216477">
+      <screen x="0" y="0" width="1536" height="864" />
     </state>
     <state width="900" height="344" key="GridCell.Tab.0.bottom/-1920.0.1536.864/0.0.1920.1080@0.0.1920.1080" timestamp="1616673595074" />
-    <state width="900" height="344" key="GridCell.Tab.0.center" timestamp="1616673595074">
-      <screen x="0" y="0" width="1920" height="1080" />
+    <state width="723" height="223" key="GridCell.Tab.0.bottom/0.0.1536.864@0.0.1536.864" timestamp="1616844216477" />
+    <state width="723" height="223" key="GridCell.Tab.0.center" timestamp="1616844216477">
+      <screen x="0" y="0" width="1536" height="864" />
     </state>
     <state width="900" height="344" key="GridCell.Tab.0.center/-1920.0.1536.864/0.0.1920.1080@0.0.1920.1080" timestamp="1616673595074" />
-    <state width="900" height="344" key="GridCell.Tab.0.left" timestamp="1616673595074">
-      <screen x="0" y="0" width="1920" height="1080" />
+    <state width="723" height="223" key="GridCell.Tab.0.center/0.0.1536.864@0.0.1536.864" timestamp="1616844216477" />
+    <state width="723" height="223" key="GridCell.Tab.0.left" timestamp="1616844216477">
+      <screen x="0" y="0" width="1536" height="864" />
     </state>
     <state width="900" height="344" key="GridCell.Tab.0.left/-1920.0.1536.864/0.0.1920.1080@0.0.1920.1080" timestamp="1616673595074" />
-    <state width="900" height="344" key="GridCell.Tab.0.right" timestamp="1616673595074">
-      <screen x="0" y="0" width="1920" height="1080" />
+    <state width="723" height="223" key="GridCell.Tab.0.left/0.0.1536.864@0.0.1536.864" timestamp="1616844216477" />
+    <state width="723" height="223" key="GridCell.Tab.0.right" timestamp="1616844216477">
+      <screen x="0" y="0" width="1536" height="864" />
     </state>
     <state width="900" height="344" key="GridCell.Tab.0.right/-1920.0.1536.864/0.0.1920.1080@0.0.1920.1080" timestamp="1616673595074" />
-    <state x="440" y="114" key="SettingsEditor" timestamp="1616669377343">
-      <screen x="0" y="0" width="1920" height="1080" />
+    <state width="723" height="223" key="GridCell.Tab.0.right/0.0.1536.864@0.0.1536.864" timestamp="1616844216477" />
+    <state x="352" y="14" key="SettingsEditor" timestamp="1616840948668">
+      <screen x="0" y="0" width="1536" height="864" />
     </state>
     <state x="440" y="114" key="SettingsEditor/-1920.0.1536.864/0.0.1920.1080@0.0.1920.1080" timestamp="1616669377343" />
+    <state x="352" y="14" key="SettingsEditor/0.0.1536.864@0.0.1536.864" timestamp="1616840948668" />
   </component>
 </project>
